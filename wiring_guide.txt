@@ -1,0 +1,30 @@
+PEDOMAN WIRING KEYLESS SYSTEM ESP32
+===================================
+
+POWER SUPPLY:
+VCC LED bar ───> ESP32 3V3
+GND LED bar ───> ESP32 GND
+
+LED INDICATOR:
+LED1 ───> GPIO 4   (ESP Ready)
+LED2 ───> GPIO 5   (BT Connected) 
+LED3 ───> GPIO 18  (WiFi Connected to Phone)
+LED4 ───> GPIO 19  (Kontak ON)
+LED5 ───> GPIO 21  (Mesin ON)
+LED6 ───> GPIO 22  (Starter - untuk fitur lanjutan)
+LED7 ───> GPIO 23  (Disconnect Alert - untuk fitur lanjutan)
+LED8 ───> GPIO 25  (Alarm/Error - untuk fitur lanjutan)
+
+INPUT BUTTON:
+Button pin 1 ───> GPIO 13  (Main Button - Kontak/Mesin)
+Button pin 2 ───> GND
+
+BUZZER (untuk fitur lanjutan):
+Buzzer + ───> GPIO 15
+Buzzer – ───> GND
+
+CATATAN:
+- Pastikan polaritas LED benar (Anoda ke GPIO, Katoda ke GND melalui resistor jika diperlukan)
+- Gunakan resistor pull-up/internal untuk button
+- Jika menggunakan LED eksternal tanpa resistor, tambahkan resistor seri 220-330 ohm
+- Sambungkan GND bersama antara ESP32, LED bar, dan button
