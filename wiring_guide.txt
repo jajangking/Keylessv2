@@ -6,25 +6,37 @@ VCC LED bar ───> ESP32 3V3
 GND LED bar ───> ESP32 GND
 
 LED INDICATOR:
-LED1 ───> GPIO 4   (ESP Ready)
-LED2 ───> GPIO 5   (BT Connected) 
-LED3 ───> GPIO 18  (WiFi Connected to Phone)
+LED1 ───> GPIO 4   (Indikator Siap)
+LED2 ───> GPIO 5   (Indikator BT)
+LED3 ───> GPIO 18  (Indikator WiFi)
 LED4 ───> GPIO 19  (Kontak ON)
-LED5 ───> GPIO 21  (Mesin ON)
-LED6 ───> GPIO 22  (Starter - untuk fitur lanjutan)
-LED7 ───> GPIO 23  (Disconnect Alert - untuk fitur lanjutan)
-LED8 ───> GPIO 25  (Alarm/Error - untuk fitur lanjutan)
+LED5 ───> GPIO 21  (Standar Naik)
+LED6 ───> GPIO 22  (Tombol Dipencet Kontak ON - 4 Pin Button)
+LED7 ───> GPIO 23  (Tombol Bypass)
+LED8 ───> GPIO 25  (Mode Tidur)
 
 INPUT BUTTON:
-Button pin 1 ───> GPIO 13  (Main Button - Kontak/Mesin)
+Button pin 1 ───> GPIO 13  (Main Button)
 Button pin 2 ───> GND
 
-BUZZER (untuk fitur lanjutan):
+ADDITIONAL 4-PIN BUTTON WITH LED:
+Button pin 1 ───> GPIO 14  (Additional Button)
+Button pin 2 ───> GND
+LED Anode ───> GPIO 12  (Additional Button LED)
+LED Cathode ───> GND  (through 220-330Ω resistor)
+
+BUZZER:
 Buzzer + ───> GPIO 15
 Buzzer – ───> GND
+
+RELAY OUTPUT:
+Relay CH1 ───> GPIO 26 (Kontak - ON/OFF Switch)
+Relay CH2 ───> GPIO 27 (Starter - Momentary Switch)
 
 CATATAN:
 - Pastikan polaritas LED benar (Anoda ke GPIO, Katoda ke GND melalui resistor jika diperlukan)
 - Gunakan resistor pull-up/internal untuk button
 - Jika menggunakan LED eksternal tanpa resistor, tambahkan resistor seri 220-330 ohm
-- Sambungkan GND bersama antara ESP32, LED bar, dan button
+- Sambungkan GND bersama antara ESP32, LED bar, button, dan relay module
+- Relay digunakan untuk mengontrol sirkuit kontak dan starter secara aman
+- Pastikan menggunakan relay module dengan driver IC (misalnya ULN2003) untuk proteksi GPIO
